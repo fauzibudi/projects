@@ -67,3 +67,5 @@ if st.button("Recommend") and selected_movie_name:
                 st.image(posters[idx], use_container_width=True)
     else:
         st.error("Movie not found. Please try another title.")
+
+#write streamlit run new_app.py in terminal
