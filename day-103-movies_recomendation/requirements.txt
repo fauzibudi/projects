@@ -3,7 +3,4 @@ pandas
 numpy
 python-dotenv
 requests
-pickle
 gdown
-io
-os
