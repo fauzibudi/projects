@@ -36,9 +36,6 @@ model = load_model()
 # Load Class Names
 @st.cache_data
 def load_class_names():
-    """
-    Memuat nama kelas dari file class_indices.json yang disimpan saat pelatihan.
-    """
     class_indices_path = 'class_indices.json'
     if not os.path.exists(class_indices_path):
         st.error(f"Error: File '{class_indices_path}' tidak ditemukan. Harap pastikan Anda telah menyimpan class_indices.json saat pelatihan.")
