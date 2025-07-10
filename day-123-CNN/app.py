@@ -24,7 +24,15 @@ st.write("Daftar File di Direktori Kerja:")
 try:
     files_in_cwd = os.listdir(os.getcwd())
     for f in files_in_cwd:
-        st.write(f"- `{f}`")
+        # Check if it's a directory and list its contents if it's 'day-123-CNN'
+        if os.path.isdir(f):
+            st.write(f"- `{f}/` (Directory)")
+            if f == 'day-123-CNN': # Assuming your app and model are in this folder
+                st.write(f"  Files inside `{f}/`:")
+                for sub_f in os.listdir(os.path.join(os.getcwd(), f)):
+                    st.write(f"  - `{sub_f}`")
+        else:
+            st.write(f"- `{f}`")
 except Exception as e:
     st.error(f"Gagal membaca direktori: {e}")
 st.write("---")
@@ -36,11 +44,12 @@ st.write("---")
 def load_model():
     """
     Memuat model Keras yang telah dilatih.
-    Asumsi: Model berada di folder yang sama dengan app.py
+    Asumsi: Model berada di folder 'day-123-CNN' di dalam direktori kerja Streamlit.
     """
-    model_path = 'best_butterfly_classification_model_transfer_learning.h5'
+    # Perbaikan: Menyesuaikan path agar sesuai dengan lokasi file di subfolder
+    model_path = 'day-123-CNN/best_butterfly_classification_model_transfer_learning.h5'
     if not os.path.exists(model_path):
-        st.error(f"Error: File model '{model_path}' tidak ditemukan. Pastikan model berada di folder yang sama dengan app.py.")
+        st.error(f"Error: File model '{model_path}' tidak ditemukan. Pastikan model berada di folder yang benar.")
         return None
     try:
         model = tf.keras.models.load_model(model_path)
@@ -56,8 +65,10 @@ model = load_model()
 def load_class_names():
     """
     Memuat nama kelas dari file class_indices.json yang disimpan saat pelatihan.
+    Asumsi: File ini berada di folder 'day-123-CNN' di dalam direktori kerja Streamlit.
     """
-    class_indices_path = 'class_indices.json' # Asumsi file ini ada di folder yang sama
+    # Perbaikan: Menyesuaikan path agar sesuai dengan lokasi file di subfolder
+    class_indices_path = 'day-123-CNN/class_indices.json'
     if not os.path.exists(class_indices_path):
         st.error(f"Error: File '{class_indices_path}' tidak ditemukan. Harap pastikan Anda telah menyimpan class_indices.json saat pelatihan.")
         st.info("Anda perlu menambahkan kode untuk menyimpan `train_generator.class_indices` ke `class_indices.json` di skrip pelatihan Anda dan menjalankan ulang pelatihan.")
