@@ -1,0 +1,5 @@
+streamlit
+langchain
+faiss-cpu
+huggingface_hub
+sentence-transformers
