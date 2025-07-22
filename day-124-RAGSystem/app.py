@@ -157,7 +157,6 @@ def main():
                 st.subheader("📝 Jawaban")
                 st.markdown(f"""
                 <div style='
-                    background-color: #f8f9fa;
                     padding: 1.5rem;
                     border-radius: 0.5rem;
                     border-left: 4px solid #4e79a7;
@@ -166,18 +165,6 @@ def main():
                 {response['result']}
                 </div>
                 """, unsafe_allow_html=True)
-
-                # Tampilkan sumber referensi
-                if response['source_documents']:
-                    with st.expander(f"📚 Sumber Referensi ({len(response['source_documents'])})"):
-                        for doc in response['source_documents']:
-                            st.markdown(f"""
-                            **{doc.metadata['source']}**  
-                            *Tahun: {doc.metadata.get('min_year', '')}-{doc.metadata.get('max_year', '')}*  
-                            ```
-                            {doc.page_content[:200]}...
-                            ```
-                            """)
                 
                 st.caption(f"⏱️ Diproses dalam {elapsed:.2f} detik")
 
