@@ -101,7 +101,6 @@ def main():
         st.divider()
         st.markdown("### Contoh Pertanyaan:")
         st.code("Apa peran Soekarno dalam kemerdekaan?")
-        st.code("Jelaskan Pertempuran Surabaya 1945")
         st.code("Apa itu Konferensi Meja Bundar?")
         st.divider()
         st.info("ℹ️ Untuk informasi lebih lanjut, hubungi: fbwmalang123@gmail.com")
