@@ -5,3 +5,4 @@ huggingface_hub
 sentence-transformers
 langchain_community
 langchain_openai
+langchain_huggingface
