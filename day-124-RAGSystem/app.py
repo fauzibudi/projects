@@ -83,14 +83,14 @@ def load_rag_system():
 
 def main():
     st.set_page_config(
-        page_title="RAG Sejarah Indonesia",
+        page_title="RAG Sejarah Kemerdekaan Indonesia",
         page_icon="📜",
         layout="wide",
         initial_sidebar_state="expanded"
     )
 
     with st.sidebar:
-        st.title("📚 RAG Sejarah Indonesia")
+        st.title("📚 RAG Sejarah Kemerdekaan Indonesia")
         st.markdown("""
         **Sistem Tanya Jawab Otomatis**  
         Didukung oleh:
