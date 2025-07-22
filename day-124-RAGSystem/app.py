@@ -24,7 +24,7 @@ def load_models():
         # Model embedding
         embedding_model = HuggingFaceEmbeddings(
             model_name="Qwen/Qwen3-Embedding-0.6B",
-            model_kwargs={'device': 'cuda' if st.secrets["USE_GPU"] else 'cpu'},
+            model_kwargs={'device': 'cpu'},
             encode_kwargs={'normalize_embeddings': True}
         )
         
