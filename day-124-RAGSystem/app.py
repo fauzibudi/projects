@@ -7,7 +7,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from streamlit.runtime.scriptrunner import add_script_run_ctx
+import time
 
 # =============================================
 # KONFIGURASI AWAL & PERBAIKAN ERROR
@@ -16,14 +16,13 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 # 1. Nonaktifkan file watcher untuk menghindari inotify error
 os.environ['STREAMLIT_SERVER_ENABLE_FILE_WATCHER'] = 'false'
 
-# 2. Perbaiki event loop
+# 2. Perbaiki event loop (VERSI DIPERBAIKI)
 def ensure_event_loop():
     try:
         return asyncio.get_running_loop()
     except RuntimeError:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        add_script_run_ctx(loop=loop)
         return loop
 
 # =============================================
@@ -190,5 +189,12 @@ def main():
 # =============================================
 
 if __name__ == "__main__":
-    ensure_event_loop()
-    main()
+    # Inisialisasi event loop
+    loop = ensure_event_loop()
+    
+    # Jalankan aplikasi utama dalam event loop
+    try:
+        main()
+    finally:
+        # Bersihkan event loop
+        loop.close()
