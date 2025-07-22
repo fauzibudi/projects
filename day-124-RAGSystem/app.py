@@ -20,11 +20,11 @@ def setup_rag_system():
                 model_kwargs={'device': 'cpu'},
                 encode_kwargs={'normalize_embeddings': True}
             )
-        
+        day-123-CNN/best_butterfly_classification_model_transfer_learning.h5
         # 2. Load vector store
         with st.spinner("📂 Memuat basis pengetahuan..."):
             vector_store = FAISS.load_local(
-                "history_faiss_index",
+                "day-124-RAGSystem/history_faiss_index",
                 embedding_model,
                 allow_dangerous_deserialization=True
             )
